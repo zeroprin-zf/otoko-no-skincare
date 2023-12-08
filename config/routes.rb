@@ -1,40 +1,40 @@
 Rails.application.routes.draw do
+  devise_for :user,skip: [:passwords], controllers: {
+    registrations: 'public/registrations',
+    sessions: 'public/sessions'
+  }
+
+  devise_for :admin, skip: [:registrations, :passwords], controller: {
+    sessions: 'admin/sessions'
+  }
+  root to: 'public/homes#top'
+
+  get 'home/about' => 'public/homes#about'
+  #カテゴリーの検索もいる
+  scope module: :public do
+    resources :users, only: [:index, :show, :edit, :update] do
+      collection do
+        get 'confirm' => 'users#confirm'
+        patch 'withdraw' => 'users#withdraw'
+      end
+    end
+
+    resources :posts do
+      resources :comments, only: [:create] #一覧もいるかも
+      resource :favorites, only: [:create, :destroy]
+    end
+
+    resources :favorites, only:[:index]
+  end
+
+  get 'admin' => 'admin/homes#top'
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
+
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update]
   end
-  namespace :admin do
-    get 'categories/index'
-    get 'categories/new'
-    get 'categories/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'searches/search'
-  end
-  namespace :public do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/new'
-    get 'posts/edit'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/confirm'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  devise_for :admins
-  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
