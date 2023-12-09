@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
 
   get 'home/about' => 'public/homes#about'
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
   #カテゴリーの検索もいる
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update] do
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :posts do
+    resources :items do
       resources :comments, only: [:create] #一覧もいるかも
       resource :favorites, only: [:create, :destroy]
     end
