@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
+    @item.save #rollbackする
     redirect_to items_path  #ここは詳細に変更するかもしれない
   end
 
@@ -24,6 +24,6 @@ class Public::ItemsController < ApplicationController
   private
   #itemの奴もいるのか
   def item_params
-    params.require(:item).permit(:image,:review, :name, :value)
+    params.require(:item).permit(:image,:review, :name, :value,:category_id)
   end
 end
