@@ -1,2 +1,9 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h4>ユーザー詳細</h4>
+<table>
+  <tr>
+    <p>ユーザー名: <%= user.name %></p>
+    <!--利用停止-->
+  </tr>
+</table>
+<div><%= image_tag @item.user.get_profile_image(100,100) %></div>
+<div><%= @user.name %></div>
