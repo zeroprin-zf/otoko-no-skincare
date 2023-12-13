@@ -20,11 +20,16 @@ Rails.application.routes.draw do
         get 'confirm' => 'users#confirm'
         patch 'withdraw' => 'users#withdraw'
       end
+      member do
+        get :favorites
+      end
     end
+
+    get "search" => "searches#search"
 
     resources :items do
       resources :comments, only: [:create, :index] #一覧もいるかも
-      resource :favorites, only: [:create, :destroy, :index]
+      resource :favorites, only: [:create, :destroy]
     end
 
     resources :favorites, only:[:index]

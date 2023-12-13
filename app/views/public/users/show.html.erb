@@ -1,9 +1,13 @@
 <h4>ユーザー詳細</h4>
 <table>
   <tr>
-    <p>ユーザー名: <%= user.name %></p>
+    <p>ユーザー名: <%= @user.name %></p>
     <!--利用停止-->
   </tr>
 </table>
-<div><%= image_tag @item.user.get_profile_image(100,100) %></div>
+<div><%= image_tag @user.get_profile_image, size: "100x100" %></div>
 <div><%= @user.name %></div>
+<div><%= link_to "いいね一覧はこちら",  favorites_path(@user.id) %></div>
+<!--投稿したitem一覧-->
+
+<p>商品名</p>

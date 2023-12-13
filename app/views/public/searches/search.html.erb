@@ -1,2 +1,10 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<h4>検索結果</h4>
+<% if @results.present? %>
+ <ul>
+   <% @results.each do |result| %>
+    <li><%= result.name %></li>
+   <% end %>
+ </ul>
+<% else %>
+ <p>検索結果がありません</p>
+<% end %>

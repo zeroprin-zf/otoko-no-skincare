@@ -12,6 +12,7 @@
 
   <body>
      <header>
+       <a href="/" >漢のスキンケア</a>
        <button class="navbar-toggler" type="button"
         data-toggle="collapse"
         data-target="#navbarNavDropdown"
@@ -64,6 +65,10 @@
     <% end %>
     </ul>
    </div>
+   <%= form_with url: search_path, local: true, method: :get do |form| %>
+    <%= form.text_field :keyword %>
+    <%= form.submit '検索' %>
+   <% end %>
   </header>
     <%= yield %>
   </body>

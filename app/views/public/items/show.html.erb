@@ -9,7 +9,6 @@
   <p>コメント件数: <%= @item.comments.count %></p>
   <p><%= render "public/favorites/btn", item: @item %></p>
   <!--いいね一覧-->
-  <p><%= link_to "いいね一覧はこちら",  favorites_path(@item.id) %></p>
   <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
   <table>
     <tr>

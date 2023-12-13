@@ -1,6 +1,8 @@
 <h4>投稿一覧</h4>
+<%= link_to "新規投稿", new_item_path %>
 <div>
   <% @items.each do |item| %>
+    <span>
       <p><%= link_to item_path(item.id) do %>
       <%= image_tag item.get_image,size: "200x200" %><% end %>
       </p>
@@ -8,5 +10,6 @@
       <p><%= link_to item.user.name , user_path(item.user.id) %></p><!--違うかもしれん-->
       <p>♡<%= item.favorites.count %></p>
       <p>コメント数:<%= item.comments.count %></p>
+    </span>
   <% end %>
 </div>
