@@ -1,2 +1,4 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<h1 class="text-center">ようこそ！！漢のスキンケアへ！！</h1>
+<p class="text-center"><%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-outline-success" , method: :post%></p>
+<p class="text-center"><%= link_to "新規作成",new_user_registration_path, class: "btn btn-success" %></p>
+<p class="text-center"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></p>

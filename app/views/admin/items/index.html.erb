@@ -1,0 +1,11 @@
+<h4>投稿一覧</h4>
+  <% @items.each do |item| %>
+    <div class="col-4 border">
+      <p><%= link_to admin_item_path(item.id) do %>
+      <%= image_tag item.get_image,size: "200x200" %><% end %>
+      </p>
+      <p><%= item.name %></p>
+      <p>コメント数:<%= item.comments.count %></p>
+    </div>
+  <% end %>
+</div>
