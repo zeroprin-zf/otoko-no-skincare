@@ -28,6 +28,12 @@ class Public::ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
+  end
+
   private
   #itemの奴もいるのか
   def item_params

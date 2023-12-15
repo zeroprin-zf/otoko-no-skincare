@@ -1,17 +1,19 @@
 <h4>コメント一覧</h4>
 <div>
-  <% @item.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image, size: "100x100" %></p><!--userモデルにメソッドを書く-->
-    <%= comment.user.name %>
-    <%= comment.comment_content %>
-  <% end %>
-</div>
-<div>
   <%= form_with model: [@item, @comment] do |f| %>
    <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに" %>
    <%= f.submit "送信する" %>
   <% end %>
 </div>
+<table>
+  <tr class="border-top border-bottom">
+    <% @item.comments.each do |comment| %>
+      <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->
+      <td><%= comment.user.name %></td>
+      <td><%= comment.comment_content %></td>
+    <% end %>
+  </tr>
+</table>
 <!--コメントのmigrationファイルがnotnullになってない-->
 <!--コメントが保存されていない-->
 <!--投稿したユーザの名前-->

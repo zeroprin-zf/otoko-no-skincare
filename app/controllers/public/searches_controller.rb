@@ -2,7 +2,7 @@ class Public::SearchesController < ApplicationController
   def search
     @keyword = params[:keyword]
     #@items = Item.search_for(@keyword)
-    @items = search_results(@keyword)
+    @results = search_results(@keyword)
   end
 
   private
