@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :user,skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
