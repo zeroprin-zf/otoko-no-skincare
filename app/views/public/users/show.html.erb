@@ -1,2 +1,25 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h4 class="text-center p-4">ユーザー詳細</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div><%= image_tag @user.get_profile_image, size: "100x100" %></div>
+    <div>ユーザー名: <%= @user.name %></div>
+    <div>自己紹介: <%= @user.introduction %></div>
+    <div><%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn btn-success" %></div>
+    <div><%= link_to "いいね一覧はこちら",  favorites_path(@user.id) %></div>
+    <!--投稿したitem一覧-->
+    </div>
+    <div class="offset-md-3 col-md-6">
+      <% @items.each do |item| %>
+        <table>
+          <tr class="border-top border-bottom">
+            <td class="pr-5"><%= image_tag item.get_image, size: "100x100" %></td>
+            <td><p><%= item.name %></p>
+            <p>♡<%= item.favorites.count %></p>
+            <p>コメント数:<%= item.comments.count %></p></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

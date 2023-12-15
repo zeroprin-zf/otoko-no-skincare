@@ -1,2 +1,12 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h4 class="p-4">ユーザー一覧</h4>
+<table class="container table table-hover">
+  <% @users.each do |user| %>
+    <tr class="border-top border-bottom">
+      <td><%= link_to admin_user_path(user.id) do %>
+      <%= image_tag user.get_profile_image, size: "100x100" %><% end %>
+      </td>
+      <td><p><%= user.name %></p>
+      <p>投稿数: <%= user.items.count %></p></td>
+    </tr>
+  <% end %>
+</table>
