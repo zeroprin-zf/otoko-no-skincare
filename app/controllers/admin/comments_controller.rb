@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @item = Item.find(params[:item_id])
     #@comment = Comment.new
