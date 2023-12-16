@@ -74,6 +74,9 @@
     </nav>
    </header>
     <main>
+      <div>
+        <%= flash[:notice] %>
+      </div>
      <%= yield %>
       <footer class="pt-5 pb-4">
          <div class="container">
