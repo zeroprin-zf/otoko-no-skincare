@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @user = User.all
     #@item = Item.find(params[:item_id])

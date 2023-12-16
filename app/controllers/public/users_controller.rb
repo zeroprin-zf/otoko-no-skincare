@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   def index
   end
 
@@ -18,11 +19,20 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:notice] = "プロフィールの編集に成功しました"
+      redirect_to user_path(@user.id)
+    else
+      flash.now[:notice] = "プロフィールの編集に失敗しました"
+      render :edit
+    end
   end
 
   def confirm
+  end
+
+  def favorited
+    @favorited = Item.favorited(current_user)
   end
 
   private

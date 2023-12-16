@@ -1,12 +1,11 @@
 <h4>投稿一覧</h4>
-<%= link_to "新規投稿", new_item_path, class: "btn btn-success" %>
 <div class="container">
   <div class="row">
     <div class="col-2">
       <%= render 'public/categories/category', categories: @categories %>
     </div>
     <% @items.each do |item| %>
-      <div class="col-4 border">
+      <div class="col-3 border text-center">
         <p><%= link_to item_path(item.id) do %>
         <%= image_tag item.get_image,size: "200x200" %><% end %>
         </p>
@@ -17,4 +16,7 @@
       </div>
     <% end %>
   </div>
+</div>
+<div class="pagination justify-content-center">
+  <%= paginate @items %><!--変わるかも-->
 </div>

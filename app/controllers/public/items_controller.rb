@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(3)
     @categories = Category.all
   end
 
@@ -9,7 +10,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
@@ -29,9 +30,14 @@ class Public::ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to items_path
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "投稿の編集に成功しました"
+      redirect_to items_path(@item.id)
+    else
+      flash.now[:notice] = "投稿の編集に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
