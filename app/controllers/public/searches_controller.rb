@@ -5,6 +5,13 @@ class Public::SearchesController < ApplicationController
     @results = search_results(@keyword)
   end
 
+  def category_search
+    @category_id = params[:category_id]
+    @items = Item.where(category_id: @category_id)
+    @categories = Category.all
+    @category = Category.find(params[:category_id])
+  end
+
   private
 
   def search_results(keyword)

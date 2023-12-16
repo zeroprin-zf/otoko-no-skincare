@@ -1,0 +1,15 @@
+<div class="category_search">
+  <table class="table">
+    <tr>
+      <th>カテゴリー検索</th>
+    </tr>
+
+    <%= form_with url: category_search_path, method: :get do |f| %>
+     <% categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category_search_path(category_id: category.id), method: :get %></td>
+      </tr>
+     <% end %>
+    <% end %>
+  </table>
+</div>

@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
+    @categories = Category.all
   end
 
   def show
@@ -14,8 +15,13 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save #rollbackする
-    redirect_to items_path  #ここは詳細に変更するかもしれない
+    if @item.save
+      flash[:notice] = "投稿に成功しました"
+      redirect_to items_path  #ここは詳細に変更するかもしれない
+    else
+      flash.now[:notice] = "投稿に失敗しました"
+      render :new
+    end
   end
 
   def edit

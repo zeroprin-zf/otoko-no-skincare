@@ -1,10 +1,15 @@
 <h4>検索結果</h4>
-<% if @results.present? %>
- <ul>
-   <% @results.each do |result| %>
-    <li><%= result.name %></li>
-   <% end %>
- </ul>
-<% else %>
- <p>検索結果がありません</p>
-<% end %>
+<div class="container">
+ <% if @results.present? %>
+    <% @results.each do |result| %>
+    <div class="col-4 border">
+     <p><%= image_tag result.get_image,size: "200x200" %></p>
+     <p><%= result.name %></p>
+      <p>♡<%= result.favorites.count %></p>
+      <p>コメント数:<%= result.comments.count %></p>
+    <% end %>
+    </div>
+ <% else %>
+  <p>検索結果がありません</p>
+ <% end %>
+</div>
