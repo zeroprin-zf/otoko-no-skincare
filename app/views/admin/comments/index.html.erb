@@ -5,7 +5,7 @@
       <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->
       <td><%= comment.user.name %></td>
       <td><%= comment.comment_content %></td>
-      <td><%= link_to "投稿を削除", admin_item_comments_path(@item.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      <td><%= link_to "コメントを削除", admin_item_comment_path(item_id: @item.id, id: comment.id) ,class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     <% end %>
   </tr>
 </table>
