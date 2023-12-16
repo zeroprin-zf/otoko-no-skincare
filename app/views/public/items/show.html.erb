@@ -11,9 +11,11 @@
   <!--いいね一覧-->
   <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
   <table>
+   <% if @item.user == current_user %>
     <tr>
      <td><%= link_to "投稿編集", edit_item_path(@item.id),class: "btn btn-success" %></td>
      <td><%= link_to "投稿を削除", item_path(@item.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     </tr>
+   <% end %>
   </table>
 </div>

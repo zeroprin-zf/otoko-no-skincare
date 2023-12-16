@@ -1,4 +1,6 @@
 <h4>コメント一覧</h4>
+<%= render 'public/items/errors', item: @comment %>
+
 <div>
   <%= form_with model: [@item, @comment] do |f| %>
    <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに" %>

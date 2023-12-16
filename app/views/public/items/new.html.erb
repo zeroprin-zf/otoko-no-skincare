@@ -1,5 +1,7 @@
 <h2>あなたのおすすめのスキンケア商品を投稿しましょう！！</h2>
-  <%= form_with model: @items, method: :post do |f| %>
+<%= render 'errors', item: @item %>
+
+  <%= form_with model: @item, method: :post do |f| %>
 
   <h4>商品画像</h4>
   <%= f.file_field :image, accept: "image/*" %>

@@ -22,10 +22,12 @@ Rails.application.routes.draw do
       end
       member do
         get :favorites
+        get :favorited
       end
     end
 
     get "search" => "searches#search"
+    get '/category/search' => 'searches#category_search'
 
     resources :items do
       resources :comments, only: [:create, :index] #一覧もいるかも

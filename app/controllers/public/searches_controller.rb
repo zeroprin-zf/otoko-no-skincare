@@ -1,8 +1,17 @@
 class Public::SearchesController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @keyword = params[:keyword]
     #@items = Item.search_for(@keyword)
     @results = search_results(@keyword)
+  end
+
+  def category_search
+    @category_id = params[:category_id]
+    @items = Item.where(category_id: @category_id)
+    @categories = Category.all.page(params[:page]).per(3)
+    @category = Category.find(params[:category_id])
   end
 
   private
