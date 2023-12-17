@@ -10,6 +10,11 @@
   <p><%= render "public/favorites/btn", item: @item %></p>
   <!--いいね一覧-->
   <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
+  <% if @item.bookmarked_by?(current_user) %>
+      <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
+     <% else %>
+      <td><%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %></td>
+     <% end %>
   <table>
    <% if @item.user == current_user %>
     <tr>
