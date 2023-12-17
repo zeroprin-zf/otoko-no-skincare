@@ -12,6 +12,7 @@ class Admin::SessionsController < Devise::SessionsController
     admin_session_path
   end
 
+
   # GET /resource/sign_in
   # def new
   #   super

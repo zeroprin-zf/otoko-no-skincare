@@ -1,7 +1,8 @@
 class Public::BookmarksController < ApplicationController
 
   def index
-    @bookmarks = Bookmark.where(user_id: current_user.id)
+    @user = User.find(params[:user_id])#user_idでユーザー個人の情報を取ってくる
+    @bookmarks = Bookmark.where(user_id: @user.id)
   end
 
   def create

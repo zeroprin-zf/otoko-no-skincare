@@ -7,7 +7,7 @@
     <div>自己紹介: <%= @user.introduction %></div>
     <% if @user == current_user %>
      <div><%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn btn-success" %></div>
-     <div><%= link_to "ブックマーク一覧はこちら",  bookmarks_path(@user.id) %></div>
+     <div><%= link_to "ブックマーク一覧はこちら",  user_bookmarks_path(@user.id) %></div>
     <% end %>
     <div><%= link_to "いいね一覧はこちら",  favorited_user_path(@user.id) %></div>
     <!--投稿したitem一覧-->

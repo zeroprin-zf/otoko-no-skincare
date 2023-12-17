@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   def index
+    @users = User.all
   end
 
   def show
@@ -31,11 +32,16 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def confirm
+  def withdraw
+    user = current_user
+    user.update(is_active: false)
+    reset_session
+    redirect_to root_path,notice: "退会処理を実行しました"
   end
 
   def favorited
-    @favorited = Item.favorited(current_user)
+    @user = User.find(params[:id])
+    @favorited = Item.favorited(@user)
   end
 
   private
