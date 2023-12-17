@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         patch 'withdraw' => 'users#withdraw'
       end
       member do
-        get :favorites
+        get :favorites#後で消して一覧見てみて
         get :favorited
       end
     end
@@ -34,7 +34,12 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
+    resources :items, except: [:index] do
+     resource :bookmarks, only: [:create, :destroy]
+    end
+
     resources :favorites, only:[:index]
+    resources :bookmarks, only:[:index]
   end
 
   get 'admin' => 'admin/homes#top'

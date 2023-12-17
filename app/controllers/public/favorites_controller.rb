@@ -3,7 +3,7 @@ class Public::FavoritesController < ApplicationController
   def index
     @user = User.all
     #@item = Item.find(params[:item_id])
-    @favorites = Favorite.all
+    @favorites = Favorite.all.where(user_id: current_user.id)
   end
 
   def create

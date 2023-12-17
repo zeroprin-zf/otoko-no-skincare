@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   validates :name, presence: true
   validates :value, presence: true
@@ -25,5 +26,9 @@ class Item < ApplicationRecord
   def self.favorited(user)
     includes(:favorites)
     .where(favorites: { user_id: user.id})
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
   end
 end
