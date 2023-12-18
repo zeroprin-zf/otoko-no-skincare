@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :user,skip: [:passwords], controllers: {
     registrations: 'public/registrations',
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'#エラー起きるかも
   }
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -15,13 +16,15 @@ Rails.application.routes.draw do
   end
   #カテゴリーの検索もいる
   scope module: :public do
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      resources :favorites, only:[:index]
+      resources :bookmarks, only:[:index]#doの直下にすることでidを取得できる
       collection do
-        get 'confirm' => 'users#confirm'
-        patch 'withdraw' => 'users#withdraw'
+        get 'confirm' => 'users#confirm' #退会確認画面
+        patch 'withdraw' => 'users#withdraw' #論理削除用のルーティング
       end
       member do
-        get :favorites#後で消して一覧見てみて
+        #get :favorites
         get :favorited
       end
     end
@@ -38,8 +41,7 @@ Rails.application.routes.draw do
      resource :bookmarks, only: [:create, :destroy]
     end
 
-    resources :favorites, only:[:index]
-    resources :bookmarks, only:[:index]
+
   end
 
   get 'admin' => 'admin/homes#top'
@@ -49,7 +51,10 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+        get 'confirm' => 'users#confirm'
+        patch 'withdraw' => 'users#withdraw'
+      end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
