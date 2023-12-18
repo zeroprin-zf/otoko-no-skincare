@@ -9,7 +9,7 @@
         <p><%= link_to item_path(item.id) do %>
         <%= image_tag item.get_image,size: "200x200" %><% end %>
         </p>
-        <p><%= item.name %></p>
+        <p><%= link_to item.name, item_path(item.id) %></p>
         <p><%= link_to item.user.name , user_path(item.user.id) %></p><!--違うかもしれん-->
         <p id="favorite_btn_<%= item.id %>">
          <%= render "public/favorites/btn", item: item %>

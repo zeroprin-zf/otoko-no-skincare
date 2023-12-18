@@ -5,7 +5,9 @@
     <div class="col-4 border">
      <p><%= image_tag result.get_image,size: "200x200" %></p>
      <p><%= result.name %></p>
-      <p>♡<%= result.favorites.count %></p>
+      <p id="favorite_btn_<%= result.id %>">
+         <%= render "public/favorites/btn", item: result %>
+        </p>
       <p>コメント数:<%= result.comments.count %></p>
     <% end %>
     </div>

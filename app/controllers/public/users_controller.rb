@@ -35,6 +35,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     user = current_user
     user.update(is_active: false)
+    Item.where(user_id: current_user.id).destroy_all#itemとそれに関連してる情報は削除される
     reset_session
     redirect_to root_path,notice: "退会処理を実行しました"
   end
