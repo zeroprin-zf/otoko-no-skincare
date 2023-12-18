@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

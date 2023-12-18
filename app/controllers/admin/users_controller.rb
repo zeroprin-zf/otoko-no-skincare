@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
     user = User.find(params[:user_id])#current_user？U
     user.update(is_active: false)
     reset_session
-    redirect_to root_path,notice: "退会処理を実行しました"
+    redirect_to admin_path,notice: "退会処理を実行しました"
   end
 
 end

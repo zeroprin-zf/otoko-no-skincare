@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :user,skip: [:passwords], controllers: {
     registrations: 'public/registrations',
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'#エラー起きるかも
   }
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   end
   #カテゴリーの検索もいる
   scope module: :public do
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
       resources :favorites, only:[:index]
       resources :bookmarks, only:[:index]#doの直下にすることでidを取得できる
       collection do
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
         patch 'withdraw' => 'users#withdraw' #論理削除用のルーティング
       end
       member do
-        get :favorites#後で消して一覧見てみて
+        #get :favorites
         get :favorited
       end
     end
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
         get 'confirm' => 'users#confirm'
         patch 'withdraw' => 'users#withdraw'
       end
