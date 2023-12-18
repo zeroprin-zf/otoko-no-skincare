@@ -11,7 +11,9 @@
         </p>
         <p><%= item.name %></p>
         <p><%= link_to item.user.name , user_path(item.user.id) %></p><!--違うかもしれん-->
-        <p>♡<%= item.favorites.count %></p>
+        <p id="favorite_btn_<%= item.id %>">
+         <%= render "public/favorites/btn", item: item %>
+        </p>
         <p>コメント数:<%= item.comments.count %></p>
       </div>
     <% end %>
