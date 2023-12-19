@@ -1,10 +1,16 @@
-<h4>検索結果</h4>
 <div class="container">
+  <h4 class="p-4 font-weight-bold">検索結果</h4>
+  <div class="row">
+    <div class="col-2">
+     <%= render 'public/categories/category', categories: @categories %>
+    </div>
  <% if @results.present? %>
     <% @results.each do |result| %>
-    <div class="col-4 border">
-     <p><%= image_tag result.get_image,size: "200x200" %></p>
-     <p><%= result.name %></p>
+    <div class="col-3 border text-center">
+     <p><%= link_to item_path(result.id) do %>
+       <%= image_tag result.get_image,size: "200x200" %><% end %>
+     </p>
+     <p><%= link_to result.name, item_path(result.id) %></p>
       <p id="favorite_btn_<%= result.id %>">
          <%= render "public/favorites/btn", item: result %>
         </p>
@@ -15,3 +21,9 @@
   <p>検索結果がありません</p>
  <% end %>
 </div>
+<div class="pagination justify-content-center">
+  <%= paginate @results %><!--変わるかも-->
+</div>
+
+
+

@@ -4,7 +4,8 @@ class Public::SearchesController < ApplicationController
   def search
     @keyword = params[:keyword]
     #@items = Item.search_for(@keyword)
-    @results = search_results(@keyword)
+    @results = search_results(@keyword).page(params[:page]).per(3)
+    @categories = Category.all
   end
 
   def category_search
