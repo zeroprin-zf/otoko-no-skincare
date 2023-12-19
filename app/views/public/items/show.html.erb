@@ -1,13 +1,15 @@
 <h4>投稿詳細</h4>
 <div>
   <%= image_tag @item.get_image,size: "200x200" %>
-  <p><%= @item.user.name %></p>
-  <p><%= @item.name %></p>
-  <p><%= @item.value %>円</p>
-  <p><%= @item.category.name %></p>
-  <p><%= @item.review %></p>
+  <p>ユーザー名: <%= @item.user.name %></p>
+  <p>投稿商品名: <%= @item.name %></p>
+  <p>価格: <%= @item.value %>円</p>
+  <p>カテゴリー名: <%= @item.category.name %></p>
+  <p>感想: <%= @item.review %></p>
   <p>コメント件数: <%= @item.comments.count %></p>
-  <p><%= render "public/favorites/btn", item: @item %></p>
+  <p id="favorite_btn_<%= @item.id %>">
+   <%= render "public/favorites/btn", item: @item %>
+  </p>
   <!--いいね一覧-->
   <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
   <% if @item.bookmarked_by?(current_user) %>

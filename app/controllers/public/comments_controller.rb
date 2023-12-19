@@ -9,13 +9,12 @@ class Public::CommentsController < ApplicationController
     item = Item.find(params[:item_id])
     @comment = current_user.comments.new(comment_params)
     @comment.item_id = item.id
-    if @comment.save
-       flash[:notice] = "コメントに成功しました"
-       redirect_to item_path(item)
-    else
-      flash.now[:notice] = "コメントに失敗しました"
-      render :index
-    end
+    @comment.save
+  end
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to request.referer
   end
 
   private

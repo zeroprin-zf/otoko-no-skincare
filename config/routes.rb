@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get '/category/search' => 'searches#category_search'
 
     resources :items do
-      resources :comments, only: [:create, :index] #一覧もいるかも
+      resources :comments, only: [:create, :index, :destroy] #一覧もいるかも
       resource :favorites, only: [:create, :destroy]
     end
 

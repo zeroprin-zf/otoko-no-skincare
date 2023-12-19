@@ -6,7 +6,9 @@
     <div>ユーザー名: <%= @user.name %></div>
     <div>自己紹介: <%= @user.introduction %></div>
     <% if @user == current_user %>
-     <div><%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn btn-success" %></div>
+       <% unless @user.email == "guest@example.com" then %>
+        <div><%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn btn-success" %></div>
+       <% end %>
      <div><%= link_to "ブックマーク一覧はこちら",  user_bookmarks_path(@user.id) %></div>
     <% end %>
     <div><%= link_to "いいね一覧はこちら",  favorited_user_path(@user.id) %></div>
@@ -19,10 +21,11 @@
             <td class="pr-5"><%= image_tag item.get_image, size: "100x100" %></td>
             <td><p><%= item.name %></p>
             <p>♡<%= item.favorites.count %></p>
-            <p>コメント数:<%= item.comments.count %></p></td>
+            <p></p></td>
           </tr>
         </table>
       <% end %>
     </div>
   </div>
 </div>
+<!--テーブルでいいかも-->
