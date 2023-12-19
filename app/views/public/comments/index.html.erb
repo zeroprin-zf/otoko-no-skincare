@@ -1,0 +1,19 @@
+<h4>コメント一覧</h4>
+<!--%= render 'public/items/errors', item: @comment %-->
+
+<div id = "comment_counter">
+  <%= render "public/comments/counter", item: @item %>
+</div>
+
+
+<%= render "public/comments/form", item: @item, comment: @comment %>
+
+<div id = "comment_index">
+  <%= render 'public/comments/index', item: @item %>
+</div>
+
+
+<!--コメントのmigrationファイルがnotnullになってない-->
+<!--コメントが保存されていない-->
+<!--投稿したユーザの名前-->
+<!--投稿された商品の名前-->

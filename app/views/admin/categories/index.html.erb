@@ -1,0 +1,20 @@
+<h4>カテゴリー一覧・追加</h4>
+<table>
+  <tr>
+    <td>カテゴリー名</td>
+    <%= form_with model:  @category, url: admin_categories_path do |f| %>
+    <td><%= f.text_field :name %></td>
+    <td><%= f.submit '追加' %></td>
+    <% end %>
+  </tr>
+
+   <tr>
+     <th>カテゴリー名</th>
+   </tr>
+   <% @categories.each do |category| %>
+   <tr>
+     <td><%= category.name %></td>
+     <td><%= link_to "削除", admin_category_path(category.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+   </tr>
+   <% end %>
+</table>

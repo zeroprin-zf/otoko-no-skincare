@@ -1,0 +1,18 @@
+<h4>投稿詳細</h4>
+<div>
+  <%= image_tag @item.get_image,size: "200x200" %>
+  <p><%= @item.user.name %></p>
+  <p><%= @item.name %></p>
+  <p><%= @item.value %>円</p>
+  <p><%= @item.category.name %></p>
+  <p><%= @item.review %></p>
+  <p>コメント件数: <%= @item.comments.count %></p>
+  <!--いいね一覧-->
+  <p><%= link_to "コメント一覧",  admin_item_comments_path(@item.id) %></p>
+  <table>
+    <tr>
+     <td><%= link_to "投稿を削除", admin_item_path(@item.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+     <!--adminの側だけで消えるかもしれない-->
+    </tr>
+  </table>
+</div>
