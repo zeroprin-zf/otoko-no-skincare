@@ -10,9 +10,8 @@ class Public::BookmarksController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    bookmark = @item.bookmarks.new(user_id: current_user.id)
-    if bookmark.save
-      redirect_to request.referer
+    @bookmark = @item.bookmarks.new(user_id: current_user.id)
+    if @bookmark.save
     else
       redirect_to request.referer
     end
@@ -20,10 +19,9 @@ class Public::BookmarksController < ApplicationController
 
   def destroy
     @item = Item.find(params[:item_id])
-    bookmark = @item.bookmarks.find_by(user_id: current_user.id)
-    if bookmark.present?
-        bookmark.destroy
-        redirect_to request.referer
+    @bookmark = @item.bookmarks.find_by(user_id: current_user.id)
+    if @bookmark.present?
+        @bookmark.destroy
     else
         redirect_to request.referer
     end
