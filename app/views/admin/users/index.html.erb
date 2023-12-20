@@ -1,5 +1,5 @@
-<h4 class="p-4">ユーザー一覧</h4>
 <table class="container table table-hover">
+   <h4 class="p-4 font-weight-bold">ユーザー一覧</h4>
   <% @users.each do |user| %>
     <tr class="border-top border-bottom">
       <td><%= link_to admin_user_path(user.id) do %>
@@ -11,3 +11,6 @@
     </tr>
   <% end %>
 </table>
+<div class="pagination justify-content-center">
+  <%= paginate @users %><!--変わるかも-->
+</div>

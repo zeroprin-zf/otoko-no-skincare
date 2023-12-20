@@ -1,5 +1,5 @@
-<h4>コメント一覧</h4>
-<table>
+<table class="container">
+  <h4 class="p-4 font-weight-bold">コメント一覧</h4>
   <tr class="border-top border-bottom">
     <% @item.comments.each do |comment| %>
       <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->

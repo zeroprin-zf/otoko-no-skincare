@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
 
   def favorited
     @user = User.find(params[:id])
-    @favorited = Item.favorited(@user)
+    @favorited = Item.favorited(@user).page(params[:page]).per(4)
   end
 
   private

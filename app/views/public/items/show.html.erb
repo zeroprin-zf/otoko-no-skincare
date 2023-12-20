@@ -1,28 +1,35 @@
-<h4>投稿詳細</h4>
-<div>
-  <%= image_tag @item.get_image,size: "200x200" %>
-  <p>ユーザー名: <%= @item.user.name %></p>
-  <p>投稿商品名: <%= @item.name %></p>
-  <p>価格: <%= @item.value %>円</p>
-  <p>カテゴリー名: <%= @item.category.name %></p>
-  <p>感想: <%= @item.review %></p>
-  <p>コメント件数: <%= @item.comments.count %></p>
-  <p id="favorite_btn_<%= @item.id %>">
-   <%= render "public/favorites/btn", item: @item %>
-  </p>
-  <!--いいね一覧-->
-  <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
-  <% if @item.bookmarked_by?(current_user) %>
-      <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
-     <% else %>
-      <td><%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %></td>
+<div class="container">
+  <h4 class="p-4 font-weight-bold">投稿詳細</h4>
+  <div class="row">
+  <div class="text-center col-md-3">
+    <%= image_tag @item.get_image,size: "200x200" %>
+  </div>
+   <div class="offset-md-1 col-md-5 text-center">
+    <p>ユーザー名: <%= @item.user.name %></p>
+    <p>投稿商品名: <%= @item.name %></p>
+    <p>価格: <%= @item.value %>円</p>
+    <p>カテゴリー名: <%= @item.category.name %></p>
+    <p>感想: <%= @item.review %></p>
+    <p>コメント件数: <%= @item.comments.count %></p>
+    <p id="favorite_btn_<%= @item.id %>">
+     <%= render "public/favorites/btn", item: @item %>
+    </p>
+    <!--いいね一覧-->
+    <p><%= link_to "コメントはこちら",  item_comments_path(@item.id) %></p>
+    <% if @item.bookmarked_by?(current_user) %>
+        <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
+       <% else %>
+        <td><%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %></td>
+       <% end %>
+    <table>
+     <% if @item.user == current_user %>
+      <tr>
+       <td><%= link_to "投稿編集", edit_item_path(@item.id),class: "btn btn-success" %></td>
+       <td><%= link_to "投稿を削除", item_path(@item.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
      <% end %>
-  <table>
-   <% if @item.user == current_user %>
-    <tr>
-     <td><%= link_to "投稿編集", edit_item_path(@item.id),class: "btn btn-success" %></td>
-     <td><%= link_to "投稿を削除", item_path(@item.id),class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-    </tr>
-   <% end %>
-  </table>
+    </table>
+   </div>
+  </div>
+ </div>
 </div>

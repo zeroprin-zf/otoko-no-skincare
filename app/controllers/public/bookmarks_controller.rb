@@ -5,7 +5,7 @@ class Public::BookmarksController < ApplicationController
     unless @user.id == current_user.id
       redirect_to user_path(current_user)
     end
-    @bookmarks = Bookmark.where(user_id: @user.id)
+    @bookmarks = Bookmark.where(user_id: @user.id).page(params[:page]).per(4)
   end
 
   def create
