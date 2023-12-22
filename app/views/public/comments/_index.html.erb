@@ -1,14 +1,18 @@
-<table>
-  <tr class="border-top border-bottom">
-    <% item.comments.each do |comment| %>
-      <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->
-      <td><%= comment.user.name %></td>
-      <td><%= comment.comment_content %></td>
-      <td>
-        <% if comment.user == current_user %>
-         <%= link_to "削除", item_comment_path(item, comment.id), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
-        <% end %>
-      </td>
-    <% end %>
-  </tr>
-</table>
+<div>
+  <table>
+    <tr>
+      <% item.comments.each do |comment| %>
+      <tbody class="border-top border-bottom">
+        <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment_content %></td>
+        <td>
+          <% if comment.user == current_user %>
+           <%= link_to "削除", item_comment_path(item, comment.id), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+          <% end %>
+        </td>
+      <% end %>
+      </tbody>
+    </tr>
+  </table>
+</div>
