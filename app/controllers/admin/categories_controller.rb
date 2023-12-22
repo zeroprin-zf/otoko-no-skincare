@@ -9,8 +9,11 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.new(category_params)
     #@category.user_id = current_user.id
-    @category.save
-    redirect_to request.referer
+    if @category.save
+     redirect_to request.referer
+    else
+      render :index
+    end
   end
 
   def new
