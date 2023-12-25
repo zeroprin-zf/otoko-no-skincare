@@ -15,7 +15,7 @@
   <body class="d-flex flex-column vh-100">
    <header class="shadow-sm  bg-info">
     <nav class="navbar navbar-expand-lg navbar-light">
-       <a href="/" class="navbar-brand ml-5"><!--%= image_tag asset_path('Fashion_Style-removebg-preview', size: "200x125") %--></a>
+       <a href="/" class="navbar-brand ml-5"><%= image_tag('Fashion_Style-removebg-preview', size: "200x125") %></a>
         <%= form_with url: search_path, local: true, method: :get do |form| %><!--ここは変更濃厚-->
           <%= form.text_field :keyword %>
           <%= form.submit '検索' %>

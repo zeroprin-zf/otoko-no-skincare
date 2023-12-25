@@ -36,7 +36,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "投稿の編集に成功しました"
-      redirect_to items_path(@item.id)
+      redirect_to item_path(@item.id)
     else
       flash.now[:notice] = "投稿の編集に失敗しました"
       render :edit
