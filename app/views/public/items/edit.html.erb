@@ -2,6 +2,7 @@
 <div class="container">
  <div class="row">
    <%= form_with model: @item do |f| %>
+   <h4>投稿編集</h4>
 
     <h4>商品画像</h4>
     <%= f.file_field :image, accept: "image/*" %><!--画像が残らない-->
@@ -16,7 +17,7 @@
     <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "カテゴリーを選択してください" } ,{ class: "form-control" } %>
 
     <h4>感想</h4>
-    <%= f.text_field :review %>
+    <%= f.text_area :review , size:"50*20"%>
 
     <!--おすすめ度、余裕があれば入れる-->
     <div class="pt-4">

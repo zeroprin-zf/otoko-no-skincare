@@ -4,9 +4,9 @@
     <div class="col-md-3">
     <div><%= image_tag @user.get_profile_image, size: "100x100" %></div>
     <div>ユーザー名: <%= @user.name %></div>
-    <div>自己紹介: <%= @user.introduction %></div>
     <% if @user == current_user %>
        <% unless @user.email == "guest@example.com" then %>
+        <div>自己紹介: <%= @user.introduction %></div>
         <div><%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn btn-success" %></div>
        <% end %>
      <div><%= link_to "ブックマーク一覧はこちら",  user_bookmarks_path(@user.id) %></div>

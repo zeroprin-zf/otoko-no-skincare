@@ -5,7 +5,6 @@
 
 
       <%= form_with model: @item, method: :post do |f| %>
-
       <h4>商品画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
 
@@ -19,9 +18,28 @@
       <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "カテゴリーを選択してください" } ,{ class: "form-control" } %>
 
       <h4>感想</h4>
-      <%= f.text_field :review %></br>
+      <%= f.text_area :review, size:"50*20" %></br>
 
-      <!--おすすめ度、余裕があれば入れる-->
+       <div class="form-group" id="star"><!--form-groupもいるかも-->
+         <%= f.label :star %>
+         <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+         <div id="post_raty"></div><!--post_ratyかもしれない-->
+       </div>
+       <script>
+         $(document).on('turbolinks:load', function(){
+           let elem = document.querySelector('#post_raty');
+           if(elem == null) return;
+
+           elem.innerHTML = ""
+            let opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'item[star]',
+            };
+           raty(elem, opt);
+         });
+       </script>
       <div class="pt-4">
         <%= f.submit '投稿', class: "btn btn-success" %>
       </div>
