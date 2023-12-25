@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit, :withdraw]
+
   def index
     @users = User.all
   end
@@ -42,7 +44,7 @@ class Public::UsersController < ApplicationController
 
   def favorited
     @user = User.find(params[:id])
-    @favorited = Item.favorited(@user)
+    @favorited = Item.favorited(@user).page(params[:page]).per(4)
   end
 
   private
@@ -52,5 +54,12 @@ class Public::UsersController < ApplicationController
 
    def user_params
      params.require(:user).permit(:name, :introduction, :profile_image)
+   end
+
+   def ensure_guest_user
+     @user = User.find(params[:id])
+     if @user.email == "guest@example.com"
+       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面、退会画面には遷移できません。"
+     end
    end
 end

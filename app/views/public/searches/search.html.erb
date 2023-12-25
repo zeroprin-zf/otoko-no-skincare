@@ -4,26 +4,13 @@
     <div class="col-2">
      <%= render 'public/categories/category', categories: @categories %>
     </div>
- <% if @results.present? %>
-    <% @results.each do |result| %>
-    <div class="col-3 border text-center">
-     <p><%= link_to item_path(result.id) do %>
-       <%= image_tag result.get_image,size: "200x200" %><% end %>
-     </p>
-     <p><%= link_to result.name, item_path(result.id) %></p>
-      <p id="favorite_btn_<%= result.id %>">
-         <%= render "public/favorites/btn", item: result %>
-        </p>
-      <p>コメント数:<%= result.comments.count %></p>
-    <% end %>
-    </div>
- <% else %>
+    <% if @results.present? %>
+     <%= render 'template/index', items: @results %>
+    <% else %>
   <p>検索結果がありません</p>
  <% end %>
+ </div>
 </div>
 <div class="pagination justify-content-center">
   <%= paginate @results %><!--変わるかも-->
 </div>
-
-
-

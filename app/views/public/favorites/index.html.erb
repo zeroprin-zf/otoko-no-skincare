@@ -1,14 +1,19 @@
-<h4>いいね一覧</h4>
 <div class="container">
- <div class="row">
-   <% @favorites.each do |favorite| %>
-    <div class="col-3 border text-center">
-     <p><%= image_tag favorite.item.get_image, size: "100x100" %></p>
-     <p>商品名: <%= favorite.item.name %></p>
-     <p>ユーザー名: <%= favorite.user.name %></p>
-     <p>♡<%= favorite.item.favorites.count %></p>
-     <p>コメント数:<%= favorite.item.comments.count %></p>
-    </div>
-   <% end %>
- </div>
+  <h4 class="p-4 font-weight-bold">いいね一覧</h4>
+  <div class="row">
+      <% @favorites.each do |favorite| %>
+       <div class="col-3 border text-center">
+        <p><%= image_tag favorite.item.get_image, size: "100x100" %></p>
+        <p>商品名: <%= favorite.item.name %></p>
+        <p>ユーザー名: <%= favorite.user.name %></p>
+        <p id="favorite_btn_<%= item.id %>">
+         <%= render "btn", item: item %>
+        </p>
+        <p>コメント数:<%= favorite.item.comments.count %></p>
+       </div>
+      <% end %>
+   </div>
+</div>
+<div class="pagination justify-content-center">
+  <%= paginate @favorites %><!--変わるかも-->
 </div>

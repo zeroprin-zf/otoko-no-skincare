@@ -52,6 +52,6 @@ class Public::ItemsController < ApplicationController
   private
   #itemの奴もいるのか
   def item_params
-    params.require(:item).permit(:image,:review, :name, :value,:category_id)
+    params.require(:item).permit(:image,:review, :name, :value,:category_id, :star)
   end
 end

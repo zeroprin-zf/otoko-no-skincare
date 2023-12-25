@@ -1,5 +1,6 @@
-<h4>コメント一覧</h4>
-<table>
+<table class="container">
+  <div class="row">
+  <h4 class="p-4 font-weight-bold">コメント一覧</h4>
   <tr class="border-top border-bottom">
     <% @item.comments.each do |comment| %>
       <td><%= image_tag comment.user.get_profile_image, size: "100x100" %></td><!--userモデルにメソッドを書く-->
@@ -8,4 +9,5 @@
       <td><%= link_to "コメントを削除", admin_item_comment_path(item_id: @item.id, id: comment.id) ,class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     <% end %>
   </tr>
+  </div>
 </table>

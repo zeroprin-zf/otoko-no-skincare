@@ -35,12 +35,8 @@ Rails.application.routes.draw do
     resources :items do
       resources :comments, only: [:create, :index, :destroy] #一覧もいるかも
       resource :favorites, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
-
-    resources :items, except: [:index] do
-     resource :bookmarks, only: [:create, :destroy]
-    end
-
 
   end
 
