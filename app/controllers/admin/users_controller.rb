@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
     user = User.find(params[:user_id])#current_user？U
     user.update(is_active: false)
     Item.where(user_id: user).destroy_all#itemとそれに関連してる情報は削除される
-    reset_session
+    #reset_session
     redirect_to admin_path,notice: "退会処理を実行しました"
   end
 

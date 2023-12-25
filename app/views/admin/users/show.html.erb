@@ -5,7 +5,11 @@
     <div><%= image_tag @user.get_profile_image, size: "100x100" %></div>
     <div>ユーザー名: <%= @user.name %></div>
     <div>自己紹介: <%= @user.introduction %></div>
-    <div><%= link_to "利用停止", admin_user_confirm_path(@user.id) %></div>
+    <div>
+      <% if @user.is_active == true %>
+       <%= link_to "利用停止", admin_user_confirm_path(@user.id) %>
+      <% end %>
+    </div>
     <div><b>会員ステータス</b></div>
           <div>
             <% if @user.is_active == true %>
