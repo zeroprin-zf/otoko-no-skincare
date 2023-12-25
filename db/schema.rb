@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2023_12_16_202354) do
     t.string "name", null: false
     t.integer "value", null: false
     t.text "review", null: false
+    t.string "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

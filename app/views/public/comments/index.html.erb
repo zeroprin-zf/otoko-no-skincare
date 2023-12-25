@@ -1,15 +1,19 @@
-<h4>コメント一覧</h4>
 <!--%= render 'public/items/errors', item: @comment %-->
-
-<div id = "comment_counter">
-  <%= render "public/comments/counter", item: @item %>
-</div>
-
-
-<%= render "public/comments/form", item: @item, comment: @comment %>
-
-<div id = "comment_index">
-  <%= render 'public/comments/index', item: @item %>
+<div class="container">
+  <div class="row">
+    <div class= "col-md-3">
+      <h4 class="p-4 font-weight-bold">コメント一覧</h4>
+      <div id = "comment_counter">
+       <%= render "public/comments/counter", item: @item %>
+      </div>
+      <%= render "public/comments/form", item: @item, comment: @comment %>
+    </div>
+    <div class="offset-md-1 col-md-8 pt-4">
+      <div id = "comment_index">
+       <%= render 'public/comments/index', item: @item %>
+      </div>
+    </div>
+  </div>
 </div>
 
 

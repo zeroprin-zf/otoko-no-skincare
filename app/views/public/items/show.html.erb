@@ -20,6 +20,7 @@
     <div id="bookmark_button_<%= @item.id %>">
      <%= render "public/bookmarks/bookmark", item: @item %>
     </div>
+    <p><%= render 'template/static', item: @item %></p>
     <table>
      <% if @item.user == current_user %>
       <tr>
