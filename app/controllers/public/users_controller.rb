@@ -57,7 +57,7 @@ class Public::UsersController < ApplicationController
    end
 
    def ensure_guest_user
-     @user = User.find(params[:id])
+     @user = current_user
      if @user.email == "guest@example.com"
        redirect_to user_path(current_user) , notice: "ゲストユーザーのプロフィール編集画面には遷移できません。"
      end
