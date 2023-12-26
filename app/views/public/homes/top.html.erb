@@ -1,6 +1,8 @@
 <div class="top-view">
-  <h1 class="text-center">ようこそ！！漢のスキンケアへ！！</h1>
-  <% if @user == current_user %>
+  <% if user_signed_in? %>
+   <h1>漢のスキンケアをお楽しみください！</h1>
+  <% else %>
+   <h1>ようこそ！！漢のスキンケアへ！！</h1>
    <p class="text-center"><%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-outline-success" , method: :post%></p>
    <p class="text-center"><%= link_to "新規作成",new_user_registration_path, class: "btn btn-success" %></p>
    <p class="text-center"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></p>
