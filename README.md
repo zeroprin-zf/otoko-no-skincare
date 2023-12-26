@@ -31,6 +31,6 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-いらすとや
-BURST
+いらすとや  
+BURST  
 photo AC
