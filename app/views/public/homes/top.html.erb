@@ -1,6 +1,6 @@
 <div class="top-view">
   <% if user_signed_in? %>
-   <h1>漢のスキンケアをお楽しみください！</h1>
+   <h1>漢のスキンケアをお楽しみください！</h1><!--いいね数多い順とか表示できるかも-->
   <% else %>
    <h1>ようこそ！！漢のスキンケアへ！！</h1>
    <p class="text-center"><%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-outline-success" , method: :post%></p>
