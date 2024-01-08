@@ -1,14 +1,18 @@
 <% items.each do |item| %>
   <div class="col-3 border text-center">
+    <div class= "post-item">
     <p><%= link_to item_path(item.id) do %>
-    <%= image_tag item.get_image,size: "200x200" %><% end %>
+    <%= image_tag item.get_image, class: 'image' %><% end %>
     </p>
-    <p><%= link_to item.name, item_path(item.id) %></p>
-    <p><%= link_to item.user.name , user_path(item.user.id) %></p><!--違うかもしれん-->
-    <p id="favorite_btn_<%= item.id %>">
-     <%= render "public/favorites/btn", item: item %>
-    </p>
-    <p>コメント数:<%= link_to item.comments.count, item_comments_path(item.id) %></p>
-    <p><%= render 'template/static', item: item %></p>
+      <div class="info">
+        <p><%= link_to item.name, item_path(item.id) %></p>
+        <p><%= link_to item.user.name , user_path(item.user.id) %></p><!--違うかもしれん-->
+        <p id="favorite_btn_<%= item.id %>">
+         <%= render "public/favorites/btn", item: item %>
+        </p>
+        <p>コメント数:<%= link_to item.comments.count, item_comments_path(item.id) %></p>
+        <p><%= render 'template/static', item: item %></p>
+      </div>
+    </div>
   </div>
 <% end %>

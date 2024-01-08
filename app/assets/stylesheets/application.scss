@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+   .image{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .info{
+    overflow-wrap: break-word;
+  }
+
+@media screen and (max-widthk: 425px){
+  header{
+    width: 100%;
+  }
+
+  main{
+    width: 100%;
+  }
+  footer{
+    width: 100%;
+  }
+}
