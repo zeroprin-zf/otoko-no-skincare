@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
        item: 商品
+       user: ユーザー
     attributes:
        item:
          name: 商品名
@@ -13,3 +14,8 @@ ja:
          name: カテゴリー名
        user:
           name: ユーザー名
+          email: メールアドレス
+          password: パスワード
+    time:
+     formats:
+      default: "%Y/%m/%d %H:%M:%S"

@@ -11,6 +11,7 @@
     <p>カテゴリー名: <%= @item.category.name %></p>
     <p>感想: <%= @item.review %></p>
     <p>コメント件数: <%= @item.comments.count %></p>
+    <p>投稿日時: <%= l @item.created_at, format: :long %></p>
     <p id="favorite_btn_<%= @item.id %>">
      <%= render "public/favorites/btn", item: @item %>
     </p>

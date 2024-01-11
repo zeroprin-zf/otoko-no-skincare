@@ -19,6 +19,10 @@
           <% end %>
           </td>
         </tr>
+        <tr>
+          <th>コメント日時</th>
+          <td><%= l comment.created_at, format: :long %></td>
+        </tr>
       <% end %>
       </tbody>
   </table>

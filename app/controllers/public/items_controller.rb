@@ -28,7 +28,7 @@ class Public::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     unless @item.user == current_user #エラー出るかも
-      redirect_to  edit_item_path(@item.id)
+      redirect_to  item_path(@item.id)
     end
   end
 

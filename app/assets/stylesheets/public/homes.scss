@@ -19,9 +19,10 @@
 
 .slide {
   width: 100%;
-  height: 800px;
+  height: auto;
 　object-fit: contain;
   position: absolute;
+  object-fit: cover;
 }
 
 .slide img {
