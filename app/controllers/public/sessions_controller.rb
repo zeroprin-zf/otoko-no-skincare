@@ -22,7 +22,7 @@ class Public::SessionsController < Devise::SessionsController
 
   def user_state
     user = User.find_by(email: params[:user][:email])
-    # もしcustomerの中にemailが一致するデータが無ければこの処理を終了する
+    # もしuserの中にemailが一致するデータが無ければこの処理を終了する
     return if user.nil?
     # emailの一致するcustomerに対してパスワードが一致しない場合この処理を終了する
     return unless user.valid_password?(params[:user][:password])
