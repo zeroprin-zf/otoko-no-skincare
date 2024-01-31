@@ -4,8 +4,8 @@
    <% @bookmarks.each do |bookmark| %>
     <div class="col-3 border text-center">
      <p><%= image_tag bookmark.item.get_image, size: "100x100" %></p>
-     <p>商品名: <%= bookmark.item.name %></p>
-     <p>ユーザー名: <%= bookmark.user.name %></p>
+     <p>商品名: <%= link_to bookmark.item.name , item_path(bookmark.item.id) %></p>
+     <p>ユーザー名: <%= bookmark.item.user.name %></p>
      <p>♡<%= bookmark.item.favorites.count %></p>
      <p>コメント数:<%= bookmark.item.comments.count %></p>
     </div>
