@@ -3,15 +3,18 @@
   <h4 class="p-4 font-weight-bold">カテゴリー一覧・追加</h4>
 <div class="row">
 　 <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-    <table>
-      <tr>
-        <td class="font-weight-bold">カテゴリー名</td>
-        <%= form_with model:  @category, url: admin_categories_path do |f| %>
-        <td><%= f.text_field :name , placeholder: "カテゴリー名"%></td>
-        <td><%= f.submit '追加', class: "btn btn-success" %></td>
-        <% end %>
-      </tr>
 
+        <h6 class="font-weight-bold">カテゴリー名</h6>
+        <%= form_with model:  @category, url: admin_categories_path do |f| %>
+        <table>
+          <tr>
+            <td><%= f.text_field :name , placeholder: "カテゴリー名"%></td>
+            <td><%= f.submit '追加', class: "btn btn-success" %></td>
+          </tr>
+        </table>
+        <% end %>
+
+    <table>
        <tr>
          <th>カテゴリー名</th>
        </tr>
