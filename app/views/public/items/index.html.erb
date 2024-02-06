@@ -1,5 +1,10 @@
 <div class="container">
   <h4 class="p-4 font-weight-bold">投稿一覧</h4>
+  <div class="p-2">
+    <%= link_to '新しい順', items_path(latest: "true") %>
+    |<%= link_to '古い順', items_path(old: "true") %>
+    |<%= link_to '評価の高い順', items_path(star_count: "true") %>
+  </div>
   <div class="row">
     <div class="col-2">
       <%= render 'public/categories/category', categories: @categories %>
