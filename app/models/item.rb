@@ -5,11 +5,20 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   validates :name, presence: true
   validates :value, presence: true
   validates :review, presence: true
   validates :image, presence: true
+  
+  scope :latest, -> {order(created_at: :desc)} #最新のものから順に並べる
+  scope :old, -> {order(created_at: :asc)} #古いものから順に並べる
+  scope :star_count, -> {order(star: :desc)} #星の数が多い順に並べる
+  #order データの取り出し
+  #created_at 投稿日のカラム
+  #desc 昇順
+  #asc 降順
 
   def get_image
     unless image.attached?

@@ -1,8 +1,23 @@
 class Public::ItemsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @items = Item.all.page(params[:page]).per(3)
+    if params[:latest]
+      @items = Item.latest.page(params[:page]).per(3)#ビューから指示を受けるための名前を定義
+    elsif params[:old]
+      @items = Item.old.page(params[:page]).per(3)
+    elsif params[:star_count]
+      @items = Item.star_count.page(params[:page]).per(3)
+    else
+      @items = Item.all.page(params[:page]).per(3)#ページネーションはすべての定義に必要
+    end
     @categories = Category.all
+
+    to = Time.current.at_end_of_day#未完成
+    from = (to - 6.day).at_beginning_of_day
+    @item = Item.includes(:favorited_users).
+     sort_by {|x|
+       x.favorited_users.includes(:favorites).where(created_at: from...to).size
+     }.reverse
   end
 
   def show
