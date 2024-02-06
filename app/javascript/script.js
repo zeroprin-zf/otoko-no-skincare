@@ -20,3 +20,11 @@ function showSlides() {
     setTimeout(showSlides, 6000);
   }
 }
+
+$(function() {
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+  });
+});

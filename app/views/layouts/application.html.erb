@@ -28,49 +28,59 @@
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span> <!--navbarの色がない-->
        </button>
-   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
+
+   <div id="sp-menu">
+     <h2>MENU</h2>
+     <ul>
       <% if user_signed_in? %>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "投稿一覧", items_path, class: 'nav-link, text-white'  %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "新規投稿", new_item_path, class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link, text-white' %>
         </li>
         <% elsif admin_signed_in? %>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to"会員一覧",admin_users_path, class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to"投稿一覧",admin_items_path, class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to"カテゴリー一覧",admin_categories_path, class: 'nav-link, text-white' %>
         </li>
-         <li class="nav-item p-3">
+         <li>
           <%= link_to"ログアウト",destroy_admin_session_path, method: :delete,class: 'nav-link, text-white' %>
         </li>
       <% else %>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "新規登録", new_user_registration_path, class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "ログイン", new_user_session_path, class: 'nav-link, text-white' %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'nav-link, text-white', method: :post %>
         </li>
-        <li class="nav-item p-3">
+        <li>
           <%= link_to "About", home_about_path, class: 'nav-link, text-white' %>
         </li>
       <% end %>
     </ul>
+   </div>
+
+   <div id="hm-icon">
+     <a class="menu-trigger" href="">
+       <span></span>
+       <span></span>
+       <span></span>
+     </a>
    </div>
 
     </nav>
