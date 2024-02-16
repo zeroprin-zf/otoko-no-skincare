@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   #カテゴリーの検索もいる
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
       resources :favorites, only:[:index]
       resources :bookmarks, only:[:index]#doの直下にすることでidを取得できる
       collection do

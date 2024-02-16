@@ -1,0 +1,9 @@
+<h2>Follower Users</h2>
+<% if @users.exists? %>
+ <%= render "template/user", users: @users %>
+<% else %>
+ <p>ユーザーはいません</p>
+<% end %>
+<div class="pagination justify-content-center">
+  <%= paginate @users %><!--変わるかも-->
+</div>
